@@ -383,21 +383,21 @@ Highlight the 1st result."
   (run-hooks 'solidity-mode-hook))
 
 ;;; --- interface with flycheck if existing ---
-(when (require 'flycheck nil 'noerror)
+;;; (when (require 'flycheck nil 'noerror)
   ;; add dummy source-inplace definition to avoid errors
-  (defvar source-inplace)
+  ;; (defvar source-inplace)
   ;; add a solidity mode callback to set the executable of solc for flycheck
   ;; define solidity's flycheck syntax checker
-  (flycheck-define-checker solidity-checker
-    "A Solidity syntax checker using the solc compiler"
-    :command ("/usr/bin/solc" source-inplace)
-    :error-patterns
-    ((error line-start (file-name) ":" line ":" column ":" " Error: " (message)))
-    :modes solidity-mode
-    :predicate (lambda () (eq major-mode 'solidity-mode)))
-  (add-to-list 'flycheck-checkers 'solidity-checker)
-  (add-hook 'solidity-mode-hook
-            (lambda () (setq flycheck-solidity-executable solidity-solc-path))))
+  ;; (flycheck-define-checker solidity-checker
+  ;;  "A Solidity syntax checker using the solc compiler"
+  ;;  :command ("/usr/bin/solc" source-inplace)
+  ;;  :error-patterns
+  ;;  ((error line-start (file-name) ":" line ":" column ":" " Error: " (message)))
+  ;;  :modes solidity-mode
+  ;;  :predicate (lambda () (eq major-mode 'solidity-mode)))
+  ;; (add-to-list 'flycheck-checkers 'solidity-checker)
+  ;; (add-hook 'solidity-mode-hook
+  ;;          (lambda () (setq flycheck-solidity-executable solidity-solc-path))))
 
 (provide 'solidity-mode)
 ;;; solidity-mode.el ends here
